@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import{useState} from 'react'
+//import components
+import TweetList  from './Components/TweetList'
+import CreateTweet from './Components/CreateTweet'
+import style from './Style/tweet.scss'
 
 function App() {
+  const [name , setName]= useState('Amir Ahmed')
+  const message='Hellow elenmask'
+    //state
+    const[textInput, setTextInput]= useState('')
+    const [tweets, setTweets]= useState([])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className='title'>Twitter Light</h1>
+        <CreateTweet
+         textInput={textInput} 
+         setTextInput={setTextInput} 
+         tweets={tweets}
+         setTweets={setTweets}/>
+      <TweetList name={name}  tweets={tweets} setTweets={setTweets}/>
+      
+   
     </div>
   );
 }
